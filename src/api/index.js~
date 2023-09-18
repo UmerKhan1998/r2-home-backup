@@ -1,0 +1,1324 @@
+import apiClient from "./apiClient";
+
+const getTax = (token, menuId, PageSize, PageNo, Language, Search) =>
+  apiClient.get("/Tax", {
+    //   PageSize: 10,
+    //   PageNo: 1,
+    //   Language: "English",
+    // }
+    // , {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      MenuId: menuId,
+      PageSize: PageSize,
+      PageNo: PageNo,
+      Language: Language,
+      Search: Search,
+    },
+  });
+
+const GetDetailRecordByKey = (courseId, expId) =>
+  apiClient.get("/ClientDashboardServices/GetDetailRecordByKey", {
+    headers: {
+      // Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      // MenuId: menuId,
+      // PageSize: PageSize,
+      // PageNo: PageNo,
+      Id: courseId,
+      Key: expId,
+    },
+  });
+
+const getCourseTrainingSearchLov = (Language, Search) =>
+  apiClient.get("/ClientDashboardServices/GetCourseTrainingSearchLov", {
+    headers: {
+      // Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      // MenuId: menuId,
+      // PageSize: PageSize,
+      // PageNo: PageNo,
+      Language: Language,
+      Search: Search,
+    },
+  });
+
+const getApplicationOTP = (code) =>
+  apiClient.get("/TrackApplicationServices/GetApplicationOTP", {
+    headers: {
+      // Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      // MenuId: menuId,
+      // PageSize: PageSize,
+      // PageNo: PageNo,
+      code,
+    },
+  });
+
+const GetCountryLov = (token) =>
+  apiClient.get("/LMSLOVServices/GetCountryLov", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      // "Content-Type": "application/json",
+      // MenuId: menuId,
+      // PageSize: PageSize,
+      // PageNo: PageNo,
+      // code,
+    },
+  });
+
+const getApplicationInstructorOTP = (code) =>
+  apiClient.get("/TrackApplicationServices/GetApplicationInstructorOTP", {
+    headers: {
+      // Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      // MenuId: menuId,
+      // PageSize: PageSize,
+      // PageNo: PageNo,
+      code,
+    },
+  });
+
+const getTrackApplication = (code, otp) =>
+  apiClient.get("/TrackApplicationServices/GetTrackApplication", {
+    headers: {
+      // Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      // MenuId: menuId,
+      // PageSize: PageSize,
+      // PageNo: PageNo,
+      code,
+      otp,
+    },
+  });
+
+const getTrackApplicationInstructor = (code, otp) =>
+  apiClient.get("/TrackApplicationServices/GetTrackApplicationInstructor", {
+    headers: {
+      // Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      // MenuId: menuId,
+      // PageSize: PageSize,
+      // PageNo: PageNo,
+      code,
+      otp,
+    },
+  });
+
+const getActiveDirectoryEmployeeID = (token, empId) =>
+  apiClient.get("/LMSADServices/GetActiveDirectoryEmployeeID", {
+    //   PageSize: 10,
+    //   PageNo: 1,
+    //   Language: "English",
+    // }
+    // , {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      EmployeeId: empId,
+    },
+  });
+
+const GetDashboardLearningPath = (token, courseTrainingId, currentPastAll) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardLearningPath", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      courseTrainingId: courseTrainingId,
+      currentPastAll: currentPastAll,
+    },
+  });
+
+const GetCouseTrainingLMSUserLov = (token, searchStr) =>
+  apiClient.get("/LearnerDashboardServices/GetCouseTrainingLMSUserLov", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      _Search: searchStr,
+    },
+  });
+
+const GetDashboardGamification = (token, searchStr) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardGamification", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      _Search: searchStr,
+    },
+  });
+
+const getDashboardTrackApplicaton = (token, code) =>
+  apiClient.get("/LearnerDashboardServices/DashboardTrackApplicaton", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Code: code,
+    },
+  });
+
+const ediTax = (token, params, menuId) =>
+  apiClient.put(
+    "/Tax",
+    {
+      ...params,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        MenuId: menuId,
+      },
+    }
+  );
+
+const forgetPasswordRequest = (params) =>
+  apiClient.put(
+    "/LMSAuth/ForgetPasswordRequest",
+    {
+      ...params,
+    }
+    // {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // }
+  );
+
+const ForgetPassword = (params) =>
+  apiClient.put(
+    "/LMSAuth/ForgetPassword",
+    {
+      ...params,
+    }
+    // {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // }
+  );
+
+const deleteTax = (token, id, menuId) =>
+  apiClient.delete(`/Tax?id=` + id, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      MenuId: menuId,
+    },
+  });
+
+const getTaxById = (token, id, menuId) =>
+  apiClient.get(`/Tax/GetTaxById`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      id: id,
+      MenuId: menuId,
+    },
+  });
+
+const getCourseDetailRecord = (id, userId) =>
+  apiClient.get(`/ClientDashboardServices/GetDetailRecord`, {
+    headers: {
+      // Authorization: `Bearer ${token}`,
+      Id: id,
+      UserId: userId,
+    },
+  });
+
+// GetCourseTrainingRegistrationLov
+const getCourseTrainingRegistrationLov = (id) =>
+  apiClient.get(`/ClientDashboardServices/GetCourseTrainingRegistrationLov`, {
+    headers: {
+      // Authorization: `Bearer ${token}`,
+      id: id,
+      // 'MenuId': menuId,
+    },
+  });
+
+// GetCourseTrainingRegistrationLov
+const getCourseTrainingRegistrationLov1 = (id, token) =>
+  apiClient.get(`/ClientDashboardServices/GetCourseTrainingRegistrationLov`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      id: id,
+      // 'MenuId': menuId,
+    },
+  });
+
+// GetInstructorTrainingRegistrationLov
+const getInstructorTrainingRegistrationLov1 = (token) =>
+  apiClient.get(`/LearnerDashboardServices/DashboardRequestForInstructor`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      // id: id,
+      // 'MenuId': menuId,
+    },
+  });
+
+// const createOrSignupUser = (params) => apiclient.post(`${process.env.REACT_APP_URL}/signup`,
+//     { ...params },
+//     {
+//         //   headers
+//     }
+// );
+
+const addTax = (token, params, menuId) =>
+  apiClient.post(
+    `/Tax`,
+    { ...params },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        MenuId: menuId,
+      },
+    }
+  );
+
+const getFeaturedRecord = () =>
+  apiClient.get("/ClientDashboardServices/GetFeaturedRecord", {
+    //   PageSize: 10,
+    //   PageNo: 1,
+    //   Language: "English",
+    // }
+    // , {
+    // headers: {
+    //     Authorization: `Bearer ${token}`,
+    //     'Content-Type': 'application/json',
+    //     "MenuId": menuId,
+    //     "PageSize":PageSize,
+    //     "PageNo":PageNo,
+    //     "Language":Language,
+    //     "Search":Search,
+    // },
+  });
+
+const getNotificationSetting = (token) =>
+  apiClient.get("/LearnerDashboardServices/GetNotificationSetting", {
+    //   PageSize: 10,
+    //   PageNo: 1,
+    //   Language: "English",
+    // }
+    // , {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+const DashboardGetAttendanceFunc = (params, token) =>
+  apiClient.post(
+    "/LearnerDashboardServices/DashboardGetAttendance",
+    { ...params },
+    {
+      //   PageSize: 10,
+      //   PageNo: 1,
+      //   Language: "English",
+      // }
+      // , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        // 'MenuId': menuId,
+      },
+    }
+  );
+
+const getCourseTrainingMasterCategory = () =>
+  apiClient.get(
+    "/LMSClientDasboardLOVServices/GetCourseTrainingMasterCategory",
+    {
+      //   PageSize: 10,
+      //   PageNo: 1,
+      //   Language: "English",
+      // }
+      // , {
+      // headers: {
+      //     Authorization: `Bearer ${token}`,
+      //     'Content-Type': 'application/json',
+      //     "MenuId": menuId,
+      //     "PageSize":PageSize,
+      //     "PageNo":PageNo,
+      //     "Language":Language,
+      //     "Search":Search,
+      // },
+    }
+  );
+
+const GetRequestaServiceLov = () =>
+  apiClient.get("/ClientDashboardServices/GetRequestaServiceLov", {
+    //   PageSize: 10,
+    //   PageNo: 1,
+    //   Language: "English",
+    // }
+    // , {
+    // headers: {
+    //     Authorization: `Bearer ${token}`,
+    //     'Content-Type': 'application/json',
+    //     "MenuId": menuId,
+    //     "PageSize":PageSize,
+    //     "PageNo":PageNo,
+    //     "Language":Language,
+    //     "Search":Search,
+    // },
+  });
+
+const getCourseTrainingCategory = () =>
+  apiClient.get("/LMSClientDasboardLOVServices/GetCourseTrainingCategory", {
+    //   PageSize: 10,
+    //   PageNo: 1,
+    //   Language: "English",
+    // }
+    // , {
+    // headers: {
+    //     Authorization: `Bearer ${token}`,
+    //     'Content-Type': 'application/json',
+    //     "MenuId": menuId,
+    //     "PageSize":PageSize,
+    //     "PageNo":PageNo,
+    //     "Language":Language,
+    //     "Search":Search,
+    // },
+  });
+
+const getLevel = () =>
+  apiClient.get("/LMSClientDasboardLOVServices/GetLevel", {
+    //   PageSize: 10,
+    //   PageNo: 1,
+    //   Language: "English",
+    // }
+    // , {
+    // headers: {
+    //     Authorization: `Bearer ${token}`,
+    //     'Content-Type': 'application/json',
+    //     "MenuId": menuId,
+    //     "PageSize":PageSize,
+    //     "PageNo":PageNo,
+    //     "Language":Language,
+    //     "Search":Search,
+    // },
+  });
+
+const getLocation = () =>
+  apiClient.get("/LMSClientDasboardLOVServices/GetLocation", {
+    //   PageSize: 10,
+    //   PageNo: 1,
+    //   Language: "English",
+    // }
+    // , {
+    // headers: {
+    //     Authorization: `Bearer ${token}`,
+    //     'Content-Type': 'application/json',
+    //     "MenuId": menuId,
+    //     "PageSize":PageSize,
+    //     "PageNo":PageNo,
+    //     "Language":Language,
+    //     "Search":Search,
+    // },
+  });
+
+const getAllRecord = (RecordType, pageSize, pageNo, language, search, params) =>
+  apiClient.post(
+    "/ClientDashboardServices/GetAllRecord",
+    {
+      ...params,
+    },
+
+    {
+      //   PageSize: 10,
+      //   PageNo: 1,
+      //   Language: "English",
+      // }
+      // , {
+      headers: {
+        // Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        RecordType: RecordType,
+        PageSize: pageSize,
+        PageNo: pageNo,
+        Language: language,
+        Search: search,
+      },
+    }
+  );
+
+const ContactUs = (params) =>
+  apiClient.post(
+    "/ClientDashboardServices/ContactUs",
+    {
+      ...params,
+    },
+
+    {
+      headers: {
+        // Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+const AddNotificationSetting = (params, token) =>
+  apiClient.post(
+    "/LearnerDashboardServices/AddNotificationSetting",
+    {
+      ...params,
+    },
+
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        // "Content-Type": "application/json",
+      },
+    }
+  );
+
+const createLMSAuthorization = (params) =>
+  apiClient.post(
+    "/LMSAuth/LoginOTP",
+    {
+      ...params,
+    },
+
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+const AddAssessmentAnswer = (token, params) =>
+  apiClient.post(
+    "/LearnerDashboardServices/AddAssessmentAnswer",
+    {
+      ...params,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+const CourseTrainingDiscussion = (token, params) =>
+  apiClient.post(
+    "/CourseTrainingDiscussion",
+    {
+      ...params,
+    },
+
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+const CourseTrainingReview = (token, params) =>
+  apiClient.post(
+    "/CourseTrainingReview",
+    {
+      ...params,
+    },
+
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+const LMSAuth = (params) =>
+  apiClient.post(
+    "/LMSAuth/Login",
+    {
+      ...params,
+    },
+
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+const LogoutUser = (token) =>
+  apiClient.get("/LMSAuth/LogoutUser", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+const OTPGenerate = (params) =>
+  apiClient.get("/LMSAuth/OTPGenerate", {
+    headers: {
+      "Content-Type": "application/json",
+      phoneNumber: params,
+    },
+  });
+
+const GetStatus = (token) =>
+  apiClient.get("/LearnerDashboardServices/GetStatus", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+const GetCourseTrainingReviewById = (token, id) =>
+  apiClient.get("/CourseTrainingReview/GetCourseTrainingReviewById", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      Id: id,
+    },
+  });
+
+const GetCourseTrainingReviewDelete = (token, id) =>
+  apiClient.delete(`/CourseTrainingReview?Id=${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+const CourseTrainingReviewPut = (token, params) =>
+  apiClient.put(
+    "/CourseTrainingReview",
+    {
+      ...params,
+    },
+
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+const DashboardRequestForInstructor = (token) =>
+  apiClient.post("/LearnerDashboardServices/DashboardRequestForInstructor", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+const GetDashboardMaster = (token) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardMaster", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+const GetDashboardMasterSchedule = (token, DayMonth, DT, Language) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardMasterSchedule", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      DayMonth: DayMonth,
+      DT: DT,
+      Language: Language,
+    },
+  });
+
+const GetDashboardMasterNoticeBoard = (
+  token,
+  pageSize,
+  pageNo,
+  language,
+  search,
+  sortBy
+) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardMasterNoticeBoard", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      PageSize: pageSize,
+      PageNo: pageNo,
+      Language: language,
+      Search: search,
+      SortBy: sortBy,
+    },
+  });
+
+const AddNoticeBoardView = (token, params) =>
+  apiClient.get("/LearnerDashboardServices/AddNoticeBoardView", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      CourseTrainingNoticeBoardId: params,
+    },
+  });
+
+const GetSort = (token) =>
+  apiClient.get("/LearnerDashboardServices/GetSort", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+const GetCourseTrainingSubCategory = (token) =>
+  apiClient.get("/LearnerDashboardServices/GetCourseTrainingSubCategory", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+const GetInstructor = (token) =>
+  apiClient.get("/LMSClientDasboardLOVServices/GetInstructor", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+const AddFavourite = (token, params) =>
+  apiClient.get("/LearnerDashboardServices/AddFavourite", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      courseTrainingId: params,
+    },
+  });
+
+const AddReminderSetting = (token, params) =>
+  apiClient.post(
+    "/LearnerDashboardServices/AddReminderSetting",
+    {
+      ...params,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+const GetReminderSetting = (token) =>
+  apiClient.get("/LearnerDashboardServices/GetReminderSetting", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+const GetDashboardInside = (token, params) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardInside", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      CourseTrainingRegistrationId: params,
+    },
+  });
+
+const GetDashboardInsideFaq = (token, params) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardInsideFaq", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      CourseTrainingRegistrationId: params,
+    },
+  });
+
+const GetDashboardInsideReview = (
+  token,
+  courseTrainingRegistrationId,
+  pageSize,
+  pageNo,
+  language,
+  search,
+  rating
+) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardInsideReview", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      CourseTrainingRegistrationId: courseTrainingRegistrationId,
+      PageSize: pageSize,
+      PageNo: pageNo,
+      Language: language,
+      Search: search,
+      Rating: rating,
+    },
+  });
+
+const GetDashboardInsideSurvey = (
+  token,
+  assessmentId,
+  courseTrainingRegistrationId
+) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardInsideSurvey", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      AssessmentId: assessmentId,
+      CourseTrainingRegistrationId: courseTrainingRegistrationId,
+    },
+  });
+
+const AddSurveyAnswer = (token, params) =>
+  apiClient.post(
+    "/LearnerDashboardServices/AddSurveyAnswer",
+    {
+      ...params,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+const GetDashboardInsideAssessment = (
+  token,
+  assessmentId,
+  courseTrainingRegistrationId
+) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardInsideAssessment", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      AssessmentId: assessmentId,
+      CourseTrainingRegistrationId: courseTrainingRegistrationId,
+    },
+  });
+
+const GetDashboardInsideDiscussion = (
+  token,
+  courseTrainingRegistrationId,
+  pageSize,
+  pageNo,
+  language,
+  search
+) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardInsideDiscussion", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      CourseTrainingRegistrationId: courseTrainingRegistrationId,
+      PageSize: pageSize,
+      PageNo: pageNo,
+      Language: language,
+      Search: search,
+    },
+  });
+
+const LMSAuthOTP = (params) =>
+  apiClient.post(
+    "/LMSAuth/LoginOTP",
+    {
+      ...params,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+const AddFileView = (token, params) =>
+  apiClient.post(
+    "/LearnerDashboardServices/AddFileView",
+    {
+      ...params,
+    },
+
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+const GetDashboardMain = (token, params) =>
+  apiClient.post(
+    "/LearnerDashboardServices/GetDashboardMain",
+    {
+      ...params,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+// const AddFavourite = (params) =>
+// apiClient.post(
+//   "/LearnerDashboardServices/AddFavourite",
+//   {
+//     ...params,
+//   },
+//   {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//       "Content-Type": "application/json",
+//     },
+//   }
+// );
+
+const createCourseTrainingRegistration = (token, params) =>
+  apiClient.post(
+    "/CourseTrainingRegistration",
+    {
+      ...params,
+    },
+
+    {
+      //   PageSize: 10,
+      //   PageNo: 1,
+      //   Language: "English",
+      // }
+      // , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        // "Content-Type": "multipart/form-data",
+        // RecordType: RecordType,
+        // PageSize: pageSize,
+        // PageNo: pageNo,
+        // Language: language,
+        // Search: search,
+      },
+    }
+  );
+
+const AddPaymentFunc = (token, params) =>
+  apiClient.post(
+    "/LearnerDashboardServices/AddPayment",
+    {
+      ...params,
+    },
+
+    {
+      //   PageSize: 10,
+      //   PageNo: 1,
+      //   Language: "English",
+      // }
+      // , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        // "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
+        // RecordType: RecordType,
+        // PageSize: pageSize,
+        // PageNo: pageNo,
+        // Language: language,
+        // Search: search,
+      },
+    }
+  );
+
+const createInstructorTrainingRegistration = (token, params) =>
+  apiClient.post(
+    "/InstructorRegistration",
+    {
+      ...params,
+    },
+
+    {
+      //   PageSize: 10,
+      //   PageNo: 1,
+      //   Language: "English",
+      // }
+      // , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        // "Content-Type": "multipart/form-data",
+        // RecordType: RecordType,
+        // PageSize: pageSize,
+        // PageNo: pageNo,
+        // Language: language,
+        // Search: search,
+      },
+    }
+  );
+
+const rmsCourseTrainingRegistrationFeedback = (token, params) =>
+  apiClient.post(
+    "/RMSCourseTrainingRegistrationFeedback",
+    {
+      ...params,
+    },
+
+    {
+      //   PageSize: 10,
+      //   PageNo: 1,
+      //   Language: "English",
+      // }
+      // , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        // "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
+        // RecordType: RecordType,
+        // PageSize: pageSize,
+        // PageNo: pageNo,
+        // Language: language,
+        // Search: search,
+      },
+    }
+  );
+
+const dashboardGetAssessment = (token, params) =>
+  apiClient.post(
+    "/LearnerDashboardServices/DashboardGetAssessment",
+    {
+      ...params,
+    },
+
+    {
+      //   PageSize: 10,
+      //   PageNo: 1,
+      //   Language: "English",
+      // }
+      // , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        // "Content-Type": "multipart/form-data",
+        // RecordType: RecordType,
+        // PageSize: pageSize,
+        // PageNo: pageNo,
+        // Language: language,
+        // Search: search,
+      },
+    }
+  );
+
+const dashboardGetSurvey = (token, params) =>
+  apiClient.post(
+    "/LearnerDashboardServices/DashboardGetSurvey",
+    {
+      ...params,
+    },
+
+    {
+      //   PageSize: 10,
+      //   PageNo: 1,
+      //   Language: "English",
+      // }
+      // , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        // "Content-Type": "multipart/form-data",
+        // RecordType: RecordType,
+        // PageSize: pageSize,
+        // PageNo: pageNo,
+        // Language: language,
+        // Search: search,
+      },
+    }
+  );
+
+const dashboardGetSort = (token, params) =>
+  apiClient.post(
+    "/LearnerDashboardServices/GetSort",
+    {
+      ...params,
+    },
+
+    {
+      //   PageSize: 10,
+      //   PageNo: 1,
+      //   Language: "English",
+      // }
+      // , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        // "Content-Type": "multipart/form-data",
+        // RecordType: RecordType,
+        // PageSize: pageSize,
+        // PageNo: pageNo,
+        // Language: language,
+        // Search: search,
+      },
+    }
+  );
+
+const GetDashboardReceipt = (token, _LMSUserId) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardReceipt", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      LMSUserId: LMSUserId,
+    },
+  });
+
+const GetDepartment = (token) =>
+  apiClient.get("/LMSLOVServices/GetDepartment", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+const GetCourseTrainingByLMSUserIdLov = (token, _LMSUserId) =>
+  apiClient.get("/LMSLOVServices/GetCourseTrainingByLMSUserIdLov", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+      LMSUserId: LMSUserId,
+    },
+  });
+
+const GetDashboardReceiptDetail = (token, receiptId) =>
+  apiClient.get("/LearnerDashboardServices/GetDashboardReceiptDetail", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      // 'Content-Type': 'application/json',
+      receiptId: receiptId,
+    },
+  });
+
+const dashboardUpdateUserProfile = (token, params) =>
+  apiClient.put(
+    "/LearnerDashboardServices/DashboardUpdateUserProfile",
+    {
+      ...params,
+    },
+
+    {
+      //   PageSize: 10,
+      //   PageNo: 1,
+      //   Language: "English",
+      // }
+      // , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        // "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
+        // RecordType: RecordType,
+        // PageSize: pageSize,
+        // PageNo: pageNo,
+        // Language: language,
+        // Search: search,
+      },
+    }
+  );
+
+const DashboardGetUserProfile = (token) =>
+  apiClient.get("/LearnerDashboardServices/DashboardGetUserProfile", {
+    //   PageSize: 10,
+    //   PageNo: 1,
+    //   Language: "English",
+    // }
+    // , {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      //     'Content-Type': 'application/json',
+      //     "MenuId": menuId,
+      //     "PageSize":PageSize,
+      //     "PageNo":PageNo,
+      //     "Language":Language,
+      //     "Search":Search,
+    },
+  });
+
+const resetPassword = (token, params) =>
+  apiClient.put(
+    "/LMSAuth/ResetPassword",
+    {
+      ...params,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        // MenuId: menuId,
+      },
+    }
+  );
+
+const createLMSUsers = (params) =>
+  apiClient.post(
+    "/LMSUser",
+    {
+      ...params,
+    },
+
+    {
+      //   PageSize: 10,
+      //   PageNo: 1,
+      //   Language: "English",
+      // }
+      // , {
+      headers: {
+        // Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        // RecordType: RecordType,
+        // PageSize: pageSize,
+        // PageNo: pageNo,
+        // Language: language,
+        // Search: search,
+      },
+    }
+  );
+
+// const get_order_reports = (
+//     token,
+//     page,
+//     order_no,
+//     tracking_no,
+//     warehouseStatus,
+//     threePlStatus,
+//     receiverName,
+//     date_range,
+//     client_id
+// ) =>
+//     apiClient.get(
+//         "/reports/completed/orders?page=" +
+//         page +
+//         "&order_no=" +
+//         order_no +
+//         "&tracking_no=" +
+//         tracking_no +
+//         "&warehouseStatus=" +
+//         warehouseStatus +
+//         "&threePlStatus=" +
+//         threePlStatus +
+//         "&receiverName=" +
+//         receiverName +
+//         "&date_range=" +
+//         date_range +
+//         "&client_id=" +
+//         client_id,
+//         {
+//             headers: {
+//                 Authorization: `Bearer ${token}`,
+//             },
+//         }
+//     );
+
+// const export_order_report = (
+//     token,
+//     page,
+//     order_no,
+//     tracking_no,
+//     warehouseStatus,
+//     threePlStatus,
+//     receiverName,
+//     date_range,
+//     client_id
+// ) =>
+//     apiClient.get(
+//         "export/shipping/orders?page=" +
+//         page +
+//         "&order_no=" +
+//         order_no +
+//         "&tracking_no=" +
+//         tracking_no +
+//         "&warehouseStatus=" +
+//         warehouseStatus +
+//         "&threePlStatus=" +
+//         threePlStatus +
+//         "&receiverName=" +
+//         receiverName +
+//         "&date_range=" +
+//         date_range +
+//         "&client_id=" +
+//         client_id,
+
+//         {
+//             headers: {
+//                 Authorization: `Bearer ${token}`,
+//             },
+//             responseType: "blob",
+//         }
+//     );
+
+export default {
+  getTax,
+  addTax,
+  ediTax,
+  deleteTax,
+  getTaxById,
+  getFeaturedRecord,
+  getAllRecord,
+  getCourseTrainingMasterCategory,
+  getCourseTrainingCategory,
+  getLevel,
+  getLocation,
+  getCourseDetailRecord,
+  getCourseTrainingRegistrationLov,
+  getCourseTrainingRegistrationLov1,
+  getActiveDirectoryEmployeeID,
+  OTPGenerate,
+  GetDashboardInside,
+  GetDashboardInsideFaq,
+  GetDashboardInsideReview,
+  GetStatus,
+  GetSort,
+  GetInstructor,
+  GetCourseTrainingSubCategory,
+  DashboardGetAttendanceFunc,
+  GetDashboardInsideDiscussion,
+  GetDashboardMasterNoticeBoard,
+  GetDashboardInsideSurvey,
+  GetDashboardMain,
+  GetDashboardMaster,
+  GetDashboardMasterSchedule,
+  DashboardGetUserProfile,
+  LogoutUser,
+  getCourseTrainingSearchLov,
+  getApplicationOTP,
+  getTrackApplication,
+  GetCourseTrainingReviewById,
+  GetDashboardInsideAssessment,
+  GetRequestaServiceLov,
+  GetDetailRecordByKey,
+  GetDashboardLearningPath,
+  GetCouseTrainingLMSUserLov,
+  GetDashboardGamification,
+  getInstructorTrainingRegistrationLov1,
+  getApplicationInstructorOTP,
+  getNotificationSetting,
+  GetReminderSetting,
+  GetCountryLov,
+  getDashboardTrackApplicaton,
+  GetDashboardReceipt,
+  GetDashboardReceiptDetail,
+  dashboardGetSort,
+  GetDepartment,
+  GetCourseTrainingByLMSUserIdLov,
+
+  // post
+  AddReminderSetting,
+  createLMSUsers,
+  createLMSAuthorization,
+  createCourseTrainingRegistration,
+  LMSAuth,
+  LMSAuthOTP,
+  AddFavourite,
+  AddFileView,
+  AddNoticeBoardView,
+  CourseTrainingReview,
+  CourseTrainingDiscussion,
+  dashboardUpdateUserProfile,
+  rmsCourseTrainingRegistrationFeedback,
+  DashboardRequestForInstructor,
+  ContactUs,
+  createInstructorTrainingRegistration,
+  getTrackApplicationInstructor,
+  AddAssessmentAnswer,
+  AddNotificationSetting,
+  AddPaymentFunc,
+  dashboardGetAssessment,
+  dashboardGetSurvey,
+
+  // put
+  forgetPasswordRequest,
+  ForgetPassword,
+  AddSurveyAnswer,
+  CourseTrainingReviewPut,
+  dashboardUpdateUserProfile,
+  resetPassword,
+
+  // Delete
+  GetCourseTrainingReviewDelete,
+};
